@@ -2,6 +2,8 @@ result = 0
 
 history = []
 
+
+
 def get_operand():
     return float(input("Please enter an operand > "))
 
@@ -15,7 +17,10 @@ def entry_id(entry):
     return entry[0]
 
 def get_next_id(history):
-    return max(list(map(entry_id, history))) + 1
+    if len(history) == 0:
+        return 1
+    else:
+        return max(list(map(entry_id, history))) + 1
 
 def perform_math_op(history, result, math_op, math_op_name):
     operand = get_operand()
