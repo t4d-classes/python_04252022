@@ -6,8 +6,8 @@ history = []
 def calc_result(history):
     result = 0
     for historyEntry in history:
-        op_value = historyEntry[2]
-        math_op = historyEntry[3]
+        op_value = historyEntry["op_value"]
+        math_op = historyEntry["math_op"]
         result = math_op(result, op_value)
     return result
 
@@ -16,13 +16,18 @@ def get_operand():
     return float(input("Please enter an operand > "))
 
 def append_to_history(history, op_name, op_value, math_op):
-    history.append((get_next_id(history), op_name, op_value, math_op))
+    history.append({
+        "id": get_next_id(history),
+        "op_name": op_name,
+        "op_value": op_value,
+        "math_op": math_op
+    })
 
 def output_result(result):
     print(f"Result: {result}")
 
 def entry_id(entry):
-    return entry[0]
+    return entry["id"]
 
 def get_next_id(history):
     if len(history) == 0:
@@ -36,14 +41,14 @@ def perform_math_op(history, math_op, math_op_name):
     output_result(calc_result(history))
 
 def command_output_history(history):
-  for historyEntry in history:
-      print(historyEntry)
+  for history_entry in history:
+      print(history_entry)
 
 def command_remove_history_entry(history):
-    historyEntryId = int(input("Please enter a history entry id > "))
-    for historyEntry in history:
-        if historyEntry[0] == historyEntryId:
-            history.remove(historyEntry)
+    history_entry_id = int(input("Please enter a history entry id > "))
+    for history_entry in history:
+        if history_entry["id"] == history_entry_id:
+            history.remove(history_entry)
 
 def command_clear():
     global history
