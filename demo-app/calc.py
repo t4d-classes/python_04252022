@@ -3,6 +3,16 @@ result = 0
 
 history = []
 
+def get_operand():
+  return float(input("Please enter an operand > "))
+
+def append_to_history(history, opName, opValue):
+  history.append((get_next_id(history), opName, opValue))
+
+def output_result(result):
+  print(f"Result: {result}")
+
+
 
 # def entry_id(entry):
 #     return entry[0]
@@ -23,34 +33,38 @@ def get_next_id(history):
     
     # return max_id + 1
 
+def perform_math_op(result, math_op, math_op_name):
+  operand = get_operand()
+  result = math_op(result, operand)
+  append_to_history(history, math_op_name, operand)
+  output_result(result)
+  return result
+
+def do_add(a,b):
+  return a + b
+
+def do_subtract(a,b):
+  return a - b
+
+def do_multiply(a,b):
+  return a * b
+
+def do_divide(a,b):
+  return a / b
+
+
 command = input("Please enter a command > ")
 
 while command:
 
     if command == "add":
-        operand = float(input("Please enter an operand > "))
-        result = result + operand
-        history.append((get_next_id(history), 'add', operand))
-        #print("Result: " + str(result))
-        print(f"Result: {result}")
+        result = perform_math_op(result, do_add, "add")
     elif command == "subtract":
-        operand = float(input("Please enter an operand > "))
-        result = result - operand
-        history.append((get_next_id(history), 'subtract', operand))
-        #print("Result: " + str(result))
-        print(f"Result: {result}")
+        result = perform_math_op(result, do_subtract, "subtract")
     elif command == "multiply":
-        operand = float(input("Please enter an operand > "))
-        result = result * operand
-        history.append((get_next_id(history), 'multiply', operand))
-        #print("Result: " + str(result))
-        print(f"Result: {result}")
+        result = perform_math_op(result, do_multiply, "multiply")
     elif command == "divide":
-        operand = float(input("Please enter an operand > "))
-        result = result / operand
-        history.append((get_next_id(history), 'divide', operand))
-        #print("Result: " + str(result))
-        print(f"Result: {result}")
+        result = perform_math_op(result, do_divide, "divide")
     elif command == "history":
         for historyEntry in history:
             print(historyEntry)
