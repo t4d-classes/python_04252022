@@ -3,13 +3,13 @@ result = 0
 history = []
 
 def get_operand():
-  return float(input("Please enter an operand > "))
+    return float(input("Please enter an operand > "))
 
 def append_to_history(history, opName, opValue):
-  history.append((get_next_id(history), opName, opValue))
+    history.append((get_next_id(history), opName, opValue))
 
 def output_result(result):
-  print(f"Result: {result}")
+    print(f"Result: {result}")
 
 def entry_id(entry):
     return entry[0]
@@ -17,24 +17,12 @@ def entry_id(entry):
 def get_next_id(history):
     return max(list(map(entry_id, history))) + 1
 
-def perform_math_op(result, math_op, math_op_name):
-  operand = get_operand()
-  result = math_op(result, operand)
-  append_to_history(history, math_op_name, operand)
-  output_result(result)
-  return result
-
-def do_add(a,b):
-  return a + b
-
-def do_subtract(a,b):
-  return a - b
-
-def do_multiply(a,b):
-  return a * b
-
-def do_divide(a,b):
-  return a / b
+def perform_math_op(history, result, math_op, math_op_name):
+    operand = get_operand()
+    result = math_op(result, operand)
+    append_to_history(history, math_op_name, operand)
+    output_result(result)
+    return result
 
 def command_output_history(history):
   for historyEntry in history:
@@ -51,18 +39,19 @@ def command_clear():
     result = 0
     history = []
 
+
 command = input("Please enter a command > ")
 
 while command:
 
     if command == "add":
-        result = perform_math_op(result, do_add, "add")
+        result = perform_math_op(history, result, lambda a,b: a + b, "add")
     elif command == "subtract":
-        result = perform_math_op(result, do_subtract, "subtract")
+        result = perform_math_op(history, result, lambda a,b: a - b, "subtract")
     elif command == "multiply":
-        result = perform_math_op(result, do_multiply, "multiply")
+        result = perform_math_op(history, result, lambda a,b: a * b, "multiply")
     elif command == "divide":
-        result = perform_math_op(result, do_divide, "divide")
+        result = perform_math_op(history, result, lambda a,b: a / b, "divide")
     elif command == "history":
         command_output_history(history)
     elif command == "remove":
