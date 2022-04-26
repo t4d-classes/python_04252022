@@ -4,8 +4,8 @@ result = 0
 history = []
 
 
-def entry_id(entry):
-    return entry[0]
+# def entry_id(entry):
+#     return entry[0]
 
 def get_next_id(history):
     # return max(list(map(entry_id, history))) + 1
