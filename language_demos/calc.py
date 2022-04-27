@@ -41,8 +41,17 @@ def perform_math_op(history, math_op, math_op_name):
     output_result(calc_result(history))
 
 def command_output_history(history):
+  
+  op_counts = {}
+  
   for history_entry in history:
+      op_name = history_entry['op_name']
+      op_counts[op_name] = op_counts.get(op_name, 0) + 1
       print(history_entry)
+
+  print(op_counts)
+
+  
 
 def command_remove_history_entry(history):
     history_entry_id = int(input("Please enter a history entry id > "))
