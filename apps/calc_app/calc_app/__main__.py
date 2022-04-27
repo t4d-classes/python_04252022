@@ -1,4 +1,4 @@
-
+from calc_app.common.input import float_input, int_input
 
 history = []
 
@@ -10,10 +10,6 @@ def calc_result(history):
         math_op = history_entry["math_op"]
         result = math_op(result, op_value)
     return result
-
-
-def get_operand():
-    return float(input("Please enter an operand > "))
 
 
 def append_to_history(history, op_name, op_value, math_op):
@@ -41,7 +37,7 @@ def get_next_id(history):
 
 
 def perform_math_op(history, math_op, math_op_name):
-    operand = get_operand()
+    operand = float_input("Enter an operand > ")
     append_to_history(history, math_op_name, operand, math_op)
     output_result(calc_result(history))
 
@@ -76,7 +72,7 @@ def command_output_history(history):
 
 
 def command_remove_history_entry(history):
-    history_entry_id = int(input("Please enter a history entry id > "))
+    history_entry_id = int_input("Please enter a history entry id > ")
     for history_entry in history:
         if history_entry["id"] == history_entry_id:
             history.remove(history_entry)
