@@ -40,18 +40,33 @@ def perform_math_op(history, math_op, math_op_name):
     append_to_history(history, math_op_name, operand, math_op)
     output_result(calc_result(history))
 
-def command_output_history(history):
-  
+def count_ops_in_history(history):
+
   op_counts = {}
   
   for history_entry in history:
       op_name = history_entry['op_name']
       op_counts[op_name] = op_counts.get(op_name, 0) + 1
+
+  return op_counts
+
+
+def output_history(history, op_counts):
+
+  for history_entry in history:
       print(history_entry)
 
-  print(op_counts)
+  print(f"Add Count: {op_counts.get('add', 0)}")
+  print(f"Subtract Count: {op_counts.get('subtract', 0)}")
+  print(f"Multiply Count: {op_counts.get('multiply', 0)}")
+  print(f"Divide Count: {op_counts.get('divide', 0)}")
 
+
+def command_output_history(history):
   
+  op_counts = count_ops_in_history(history)
+  output_history(history, op_counts)
+
 
 def command_remove_history_entry(history):
     history_entry_id = int(input("Please enter a history entry id > "))
