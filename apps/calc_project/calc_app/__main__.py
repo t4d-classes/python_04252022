@@ -1,6 +1,7 @@
 from calc_app.common.input import float_input, int_input
 from calc_app.common.output import output_result, output_history
 from calc_app.models.history import CalcHistory, HistoryEntry
+from calc_app.common.logger import Logger
 
 
 def calc_result(history):
@@ -46,11 +47,15 @@ def command_clear(calc_history):
 
 def app():
 
+    command_logger = Logger("command.log", log_name="Command")
+
     calc_history = CalcHistory()
 
     command = input("Please enter a command > ")
 
     while command:
+
+        command_logger.log(command)
 
         if command == "add":
             command_math_op(calc_history, lambda a, b: a + b, "add")
