@@ -1,42 +1,23 @@
 from calc_app.common.input import float_input, int_input
-from calc_app.models.history import HistoryEntry
 from calc_app.common.output import output_result, output_history
-
-history = []
+from calc_app.models.history import CalcHistory, HistoryEntry
 
 
 def calc_result(history):
     result = 0
-    for history_entry in history:
+    # TODO: after lunch
+    for history_entry in history.get_entries():
         op_value = history_entry.op_value
         math_op = history_entry.math_op
         result = math_op(result, op_value)
     return result
 
 
-def append_to_history(history, op_name, op_value, math_op):
-    history.append(HistoryEntry(
-        get_next_id(history),
-        op_name,
-        op_value,
-        math_op
-    ))
-
-
-def entry_id(entry):
-    return entry.entry_id
-
-
-def get_next_id(history):
-    if len(history) == 0:
-        return 1
-    else:
-        return max(list(map(entry_id, history))) + 1
-
-
-def perform_math_op(history, math_op, math_op_name):
+def command_math_op(history, math_op, math_op_name):
     operand = float_input("Enter an operand > ")
-    append_to_history(history, math_op_name, operand, math_op)
+    history.append(HistoryEntry(math_op_name, operand, math_op))
+
+    # TODO: after lunch
     output_result(calc_result(history))
 
 
@@ -45,6 +26,7 @@ def count_ops_in_history(history):
 
     op_counts = {}
 
+    # TODO: after lunch
     for history_entry in history:
         op_name = history_entry.op_name
         op_counts[op_name] = op_counts.get(op_name, 0) + 1
@@ -53,43 +35,47 @@ def count_ops_in_history(history):
 
 
 def command_output_history(history):
-
+    # TODO: after lunch
     op_counts = count_ops_in_history(history)
     output_history(history, op_counts)
 
 
 def command_remove_history_entry(history):
     history_entry_id = int_input("Please enter a history entry id > ")
-    for history_entry in history:
-        if history_entry.entry_id == history_entry_id:
-            history.remove(history_entry)
+    history.remove(history_entry_id)
 
 
-def command_clear():
+def command_clear(calc_history):
 
-    global history  # pylint: disable=invalid-name
-    history = []
+    calc_history.clear()
 
 
-command = input("Please enter a command > ")
+def app():
 
-while command:
-
-    if command == "add":
-        perform_math_op(history, lambda a, b: a + b, "add")
-    elif command == "subtract":
-        perform_math_op(history, lambda a, b: a - b, "subtract")
-    elif command == "multiply":
-        perform_math_op(history, lambda a, b: a * b, "multiply")
-    elif command == "divide":
-        perform_math_op(history, lambda a, b: a / b, "divide")
-    elif command == "history":
-        command_output_history(history)
-    elif command == "remove":
-        command_remove_history_entry(history)
-    elif command == "clear":
-        command_clear()
-    else:
-        print("unknown command, please try again")
+    calc_history = CalcHistory()
 
     command = input("Please enter a command > ")
+
+    while command:
+
+        if command == "add":
+            command_math_op(calc_history, lambda a, b: a + b, "add")
+        elif command == "subtract":
+            command_math_op(calc_history, lambda a, b: a - b, "subtract")
+        elif command == "multiply":
+            command_math_op(calc_history, lambda a, b: a * b, "multiply")
+        elif command == "divide":
+            command_math_op(calc_history, lambda a, b: a / b, "divide")
+        elif command == "history":
+            command_output_history(calc_history)
+        elif command == "remove":
+            command_remove_history_entry(calc_history)
+        elif command == "clear":
+            command_clear(calc_history)
+        else:
+            print("unknown command, please try again")
+
+        command = input("Please enter a command > ")
+
+
+app()
