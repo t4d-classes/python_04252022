@@ -1,5 +1,6 @@
 from calc_app.common.input import float_input, int_input
 from calc_app.models.history import HistoryEntry
+from calc_app.common.output import output_result, output_history
 
 history = []
 
@@ -20,10 +21,6 @@ def append_to_history(history, op_name, op_value, math_op):
         op_value,
         math_op
     ))
-
-
-def output_result(result):
-    print(f"Result: {result}")
 
 
 def entry_id(entry):
@@ -53,17 +50,6 @@ def count_ops_in_history(history):
         op_counts[op_name] = op_counts.get(op_name, 0) + 1
 
     return op_counts
-
-
-def output_history(history, op_counts):
-
-    for history_entry in history:
-        print(history_entry)
-
-    print(f"Add Count: {op_counts.get('add', 0)}")
-    print(f"Subtract Count: {op_counts.get('subtract', 0)}")
-    print(f"Multiply Count: {op_counts.get('multiply', 0)}")
-    print(f"Divide Count: {op_counts.get('divide', 0)}")
 
 
 def command_output_history(history):
