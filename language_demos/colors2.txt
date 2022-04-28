@@ -1,0 +1,7 @@
+purple
+blue
+green
+red
+black
+saffron
+yellow

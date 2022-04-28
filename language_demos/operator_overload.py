@@ -16,12 +16,12 @@ class NumList:
 
 
     def __iter__(self):
-        #print("create the iterator")
+        print("create the iterator")
         self.__current_iter = iter(self.__items)
         return self
 
     def __next__(self):
-        #print("next iteration")
+        print("next iteration")
         return next(self.__current_iter)
 
 
@@ -47,5 +47,6 @@ nums = nums + 8
 nums += 10
 nums = nums + 12
 
-print(nums[nums > 6])
-print(len(nums))
+# print(nums[nums > 6])
+# print(len(nums))
+print(8 in nums)
