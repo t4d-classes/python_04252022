@@ -12,7 +12,7 @@
     "python.linting.pylintArgs": [
         "--max-line-length=79",
         "--ignore=.git,venv,.vscode,__pycache__",
-        "--disable=missing-function-docstring,missing-module-docstring,global-statement"
+        "--disable=missing-class-docstring,missing-function-docstring,missing-module-docstring,global-statement"
     ],
     "editor.tabSize": 4,
     "editor.detectIndentation": false

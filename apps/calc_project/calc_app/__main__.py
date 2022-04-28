@@ -1,4 +1,5 @@
 from calc_app.common.input import float_input, int_input
+from calc_app.models.history import HistoryEntry
 
 history = []
 
@@ -6,19 +7,19 @@ history = []
 def calc_result(history):
     result = 0
     for history_entry in history:
-        op_value = history_entry["op_value"]
-        math_op = history_entry["math_op"]
+        op_value = history_entry.op_value
+        math_op = history_entry.math_op
         result = math_op(result, op_value)
     return result
 
 
 def append_to_history(history, op_name, op_value, math_op):
-    history.append({
-        "id": get_next_id(history),
-        "op_name": op_name,
-        "op_value": op_value,
-        "math_op": math_op
-    })
+    history.append(HistoryEntry(
+        get_next_id(history),
+        op_name,
+        op_value,
+        math_op
+    ))
 
 
 def output_result(result):
@@ -26,7 +27,7 @@ def output_result(result):
 
 
 def entry_id(entry):
-    return entry["id"]
+    return entry.entry_id
 
 
 def get_next_id(history):
@@ -48,7 +49,7 @@ def count_ops_in_history(history):
     op_counts = {}
 
     for history_entry in history:
-        op_name = history_entry['op_name']
+        op_name = history_entry.op_name
         op_counts[op_name] = op_counts.get(op_name, 0) + 1
 
     return op_counts
@@ -74,7 +75,7 @@ def command_output_history(history):
 def command_remove_history_entry(history):
     history_entry_id = int_input("Please enter a history entry id > ")
     for history_entry in history:
-        if history_entry["id"] == history_entry_id:
+        if history_entry.entry_id == history_entry_id:
             history.remove(history_entry)
 
 
