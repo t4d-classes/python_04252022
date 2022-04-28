@@ -5,8 +5,7 @@ from calc_app.models.history import CalcHistory, HistoryEntry
 
 def calc_result(history):
     result = 0
-    # TODO: after lunch
-    for history_entry in history.get_entries():
+    for history_entry in history:
         op_value = history_entry.op_value
         math_op = history_entry.math_op
         result = math_op(result, op_value)
@@ -16,8 +15,6 @@ def calc_result(history):
 def command_math_op(history, math_op, math_op_name):
     operand = float_input("Enter an operand > ")
     history.append(HistoryEntry(math_op_name, operand, math_op))
-
-    # TODO: after lunch
     output_result(calc_result(history))
 
 
@@ -26,7 +23,6 @@ def count_ops_in_history(history):
 
     op_counts = {}
 
-    # TODO: after lunch
     for history_entry in history:
         op_name = history_entry.op_name
         op_counts[op_name] = op_counts.get(op_name, 0) + 1
@@ -35,7 +31,6 @@ def count_ops_in_history(history):
 
 
 def command_output_history(history):
-    # TODO: after lunch
     op_counts = count_ops_in_history(history)
     output_history(history, op_counts)
 
@@ -46,7 +41,6 @@ def command_remove_history_entry(history):
 
 
 def command_clear(calc_history):
-
     calc_history.clear()
 
 
