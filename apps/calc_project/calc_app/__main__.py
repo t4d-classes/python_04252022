@@ -1,3 +1,4 @@
+import argparse
 import re
 
 from calc_app.common.output import output_result, output_history
@@ -60,9 +61,26 @@ def parse_command(command_input_str):
 
     return (command_dict["command"], command_dict.get("arg", None))
 
+
+def app_cli_args():
+
+    parser = argparse.ArgumentParser(description="Command Line Calculator")
+
+    parser.add_argument(
+        "--command_log_file",
+        type=str,
+        help="command log file path",
+        default="command.log"
+    )
+
+    return parser.parse_args()
+
+
 def app():
 
-    command_logger = Logger("command.log", log_name="Command")
+    app_options = app_cli_args()
+
+    command_logger = Logger(app_options.command_log_file, log_name="Command")
 
     calc_history = CalcHistory()
 
