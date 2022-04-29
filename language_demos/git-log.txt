@@ -1,0 +1,192 @@
+commit 7087bc26aeaf7701ca78d504d6ec5911f690c9ff
+Author: Eric Greene <eric@t4d.io>
+Date:   Fri Apr 29 18:18:30 2022 -0400
+
+    add code demos
+
+commit 470d7ce9a1fbb74db45078d693c7c2cfa3381154
+Author: Eric Greene <eric@t4d.io>
+Date:   Fri Apr 29 14:59:50 2022 -0400
+
+    add parse command regex version
+
+commit 057cd1082d105c68329752171213fc81b45ceb4e
+Author: Eric Greene <eric@t4d.io>
+Date:   Fri Apr 29 14:00:24 2022 -0400
+
+    add single command input using split
+
+commit 76e15fc93ebac50172f891a530ba8ded48d1e4f0
+Author: Eric Greene <eric@t4d.io>
+Date:   Fri Apr 29 13:00:08 2022 -0400
+
+    one little fix I made concerning the import for the type hint
+
+commit ed9be1f2a0677f14ac23c7105b054c6b0fba809b
+Author: Eric Greene <eric@t4d.io>
+Date:   Fri Apr 29 06:43:27 2022 -0400
+
+    add solution to exercise 11
+
+commit 1bfe50d5c0aa65383ff3fcfb66e61c17522f403e
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 19:38:42 2022 -0400
+
+    add exercise 11
+
+commit a0e8e37b4aa81d8e03de8ff7e58952346876cb5e
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 18:17:58 2022 -0400
+
+    add exercise 10
+
+commit 4ec79e33f6f6524fcfab2b3d7c2085c30506ea1f
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 17:19:24 2022 -0400
+
+    add operator overloading demos
+
+commit 575c9ccba2102d92bc952365ecad8900a5d6b9fa
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 15:32:26 2022 -0400
+
+    add code demos
+
+commit 0834d8605e175a7f16e8cc4a63eb99f19a83cb51
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 12:41:04 2022 -0400
+
+    add exercise 9
+
+commit f6c4f0fac74ba70c5ed0ef8f9d7ffd22f64300b7
+Merge: e7aaa98 70fbe44
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 11:12:02 2022 -0400
+
+    add code demos
+
+commit e7aaa987d098c34456e345e8f8d5754621dc3d7f
+Author: Eric Greene <eric@t4d.io>
+Date:   Thu Apr 28 11:10:43 2022 -0400
+
+    add code demos
+
+commit 70fbe444af543919ceb83b3628e4a8d2c7b9c92c
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 21:19:07 2022 -0400
+
+    add solution to exercise 7
+
+commit d44d2489c6318772ce227f904f9a716c8db35593
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 18:22:50 2022 -0400
+
+    add exercise 8
+
+commit f905a3312f37bcbfee824196bad29ce96f9ac3ad
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 16:56:00 2022 -0400
+
+    add exercise 7
+
+commit 40862c32ac447d1630f8168c226161f324c60b6f
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 15:27:42 2022 -0400
+
+    add input module to calc app
+
+commit 10795e83cef64317a3f26c3e25eaed027d04e91e
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 14:40:37 2022 -0400
+
+    add configuration for vscode
+
+commit 9b4225c80dd3be4afd3bf3a947514ff873ecdecb
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 14:00:28 2022 -0400
+
+    add setup of calc app
+
+commit 731347e6e5495dba0b14c9e2dc2d04193aaf85a6
+Author: Eric Greene <eric@t4d.io>
+Date:   Wed Apr 27 11:12:34 2022 -0400
+
+    add op counts solution
+
+commit 89971c9f3e2b0cd7d91181572173d831821ca0d8
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 19:53:40 2022 -0400
+
+    add solution to exercise 6
+
+commit 118bf1b781847ea4c6b30cab1a442320a4c31e7a
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 19:12:10 2022 -0400
+
+    add exercise 6
+
+commit 098edc1309e9e839648ffb1951dd23de02fe8a9b
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 18:00:33 2022 -0400
+
+    add exercise 5
+
+commit 482394c72061b136557af3adbbdb11818c48519a
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 17:24:46 2022 -0400
+
+    add solution 4
+
+commit 35a5f2f0b2e9b9cb5e3f244dcf20485586fd5932
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 15:22:29 2022 -0400
+
+    add fix to solution 3
+
+commit 13431f68cd7645dca46a03a974aaea44d0c4d0fe
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 15:16:19 2022 -0400
+
+    add exercise 4
+
+commit 1fe5e4b7d257986be5735ca9e8600973a46748a6
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 15:03:30 2022 -0400
+
+    add solution to exercise 3
+
+commit 09fef97480d9623369627a605cffa75c73026ebb
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 14:43:34 2022 -0400
+
+    add partial solution to exercise 3
+
+commit 1287b440b1ad5979ddb457f7df97ae1a64c84a82
+Author: Eric Greene <eric@t4d.io>
+Date:   Tue Apr 26 13:40:13 2022 -0400
+
+    add exercise 3
+
+commit 4225a826fe9d6755e58291948f8492ae41a8146c
+Author: Eric Greene <eric@t4d.io>
+Date:   Mon Apr 25 19:57:52 2022 -0400
+
+    add solution to exercise 2
+
+commit c57e2eec1b4eb58d9c4bf556169d7ff579655c55
+Author: Eric Greene <eric@t4d.io>
+Date:   Mon Apr 25 18:46:21 2022 -0400
+
+    add exercise 2
+
+commit d4927cd094947971169113ab04ab8a4e97573b2c
+Author: Eric Greene <eric@t4d.io>
+Date:   Mon Apr 25 16:31:05 2022 -0400
+
+    add exercise 1
+
+commit 5238d4a79b83dddea75c1c09a0be856ff355fe35
+Author: Eric Greene <eric@t4d.io>
+Date:   Sun Apr 24 11:39:07 2022 -0400
+
+    initial commit
