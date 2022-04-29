@@ -2,33 +2,15 @@ from calc_app.common.input import float_input, int_input
 from calc_app.common.output import output_result, output_history
 from calc_app.models.history import CalcHistory, HistoryEntry
 from calc_app.common.logger import Logger
-
-
-def calc_result(history):
-    result = 0
-    for history_entry in history:
-        op_value = history_entry.op_value
-        math_op = history_entry.math_op
-        result = math_op(result, op_value)
-    return result
+from calc_app.common.calc_ops import (
+    calc_ops, count_ops_in_history, calc_result
+)
 
 
 def command_math_op(history, math_op, math_op_name):
     operand = float_input("Enter an operand > ")
     history.append(HistoryEntry(math_op_name, operand, math_op))
     output_result(calc_result(history))
-
-
-def count_ops_in_history(history):
-    """ counts the frequency of the different operations in the history """
-
-    op_counts = {}
-
-    for history_entry in history:
-        op_name = history_entry.op_name
-        op_counts[op_name] = op_counts.get(op_name, 0) + 1
-
-    return op_counts
 
 
 def command_output_history(history):
@@ -45,36 +27,44 @@ def command_clear(calc_history):
     calc_history.clear()
 
 
+def command_unknown(_):
+    print("unknown command, please try again")
+
+
 def app():
 
     command_logger = Logger("command.log", log_name="Command")
 
     calc_history = CalcHistory()
 
-    command = input("Please enter a command > ")
+    commands = {
+        "history": command_output_history,
+        "remove": command_remove_history_entry,
+        "clear": command_clear,
+    }
 
-    while command:
+    while True:
+
+        command_processed = False
+
+        command = input("Please enter a command > ")
+
+        if not command:
+            break
 
         command_logger.log(command)
 
-        if command == "add":
-            command_math_op(calc_history, lambda a, b: a + b, "add")
-        elif command == "subtract":
-            command_math_op(calc_history, lambda a, b: a - b, "subtract")
-        elif command == "multiply":
-            command_math_op(calc_history, lambda a, b: a * b, "multiply")
-        elif command == "divide":
-            command_math_op(calc_history, lambda a, b: a / b, "divide")
-        elif command == "history":
-            command_output_history(calc_history)
-        elif command == "remove":
-            command_remove_history_entry(calc_history)
-        elif command == "clear":
-            command_clear(calc_history)
-        else:
-            print("unknown command, please try again")
+        for calc_op in calc_ops:
+            if calc_op.command == command:
+                command_math_op(calc_history, calc_op.func, calc_op.name)
+                command_processed = True
+                break
 
-        command = input("Please enter a command > ")
+        if command_processed:
+            continue
+
+        command_func = commands.get(command, command_unknown)
+        command_func(calc_history)
 
 
 app()
