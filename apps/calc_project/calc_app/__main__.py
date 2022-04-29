@@ -1,4 +1,5 @@
-from calc_app.common.input import float_input, int_input
+import re
+
 from calc_app.common.output import output_result, output_history
 from calc_app.models.history import CalcHistory, HistoryEntry
 from calc_app.common.logger import Logger
@@ -30,6 +31,35 @@ def command_unknown(_1, *_2):
     print("unknown command, please try again")
 
 
+def parse_command_split(command_input_str):
+
+    command_input_parts = command_input_str.split(" ")
+
+    command = command_input_parts[0]
+
+    if len(command_input_parts) == 2:
+        arg = command_input_parts[1]
+    else:
+        arg = None
+
+    return (command, arg)
+
+
+def parse_command(command_input_str):
+
+    command_re = re.compile(
+        r"(?P<command>[a-z]*)( (?P<arg>[0-9]*))?"
+    )
+
+    command_match = command_re.match(command_input_str)
+
+    if not command_match:
+        return ("", None)
+
+    command_dict = command_match.groupdict()
+
+    return (command_dict["command"], command_dict.get("arg", None))
+
 def app():
 
     command_logger = Logger("command.log", log_name="Command")
@@ -56,14 +86,7 @@ def app():
         if not user_input_str:
             break
 
-        user_input_parts = user_input_str.split(" ")
-
-        command = user_input_parts[0]
-
-        if len(user_input_parts) == 2:
-            arg = user_input_parts[1]
-        else:
-            arg = None
+        command, arg = parse_command(user_input_str)
 
         command_logger.log(command)
 
