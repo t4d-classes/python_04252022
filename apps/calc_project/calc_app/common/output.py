@@ -1,12 +1,11 @@
 from calc_app.common.calc_ops import calc_ops
-from calc_app.models.history import HistoryEntry
 
 
 def output_result(result):
     print(f"\nResult: {result}\n")
 
 
-def output_history(history: list[HistoryEntry], op_counts):
+def output_history(history, op_counts):
 
     print()
     print("=" * 30)
